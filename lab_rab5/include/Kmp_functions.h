@@ -1,9 +1,13 @@
+#pragma once
+
 #include <iostream>
 #include <vector>
-using namespace std;
+#include <string>
 
-void print(const vector<int>& index);
+void print(const std::vector<int>& index);
 
-vector<int> prefix(string str);
+std::vector<int> prefix(std::string str);
 
-vector<int> kmp(string str, string obr, const vector<int>& pi);
+std::vector<int> kmp(std::string str, std::string obr, const std::vector<int>& pi);
+
+int shift(std::string str, std::string obr, const std::vector<int>& pi);
