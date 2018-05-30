@@ -10,7 +10,7 @@ void print(const std::vector<int>& index) //печать результата
 	}
 }
 
-std::vector<int> prefix(std::string str) //нахождение префикса
+std::vector<int> prefix(std::string& str) //нахождение префикса
 {
 	size_t n = str.size();
 	std::vector<int> pi(n);
@@ -26,7 +26,7 @@ std::vector<int> prefix(std::string str) //нахождение префикса
 	return pi;
 }
 
-std::vector<int> kmp(std::string str, std::string obr, const std::vector<int>& pi)
+std::vector<int> kmp(std::string& str, std::string& obr, const std::vector<int>& pi)
 {
 	std::vector<int> index;
 	size_t j = 0;
@@ -47,11 +47,12 @@ std::vector<int> kmp(std::string str, std::string obr, const std::vector<int>& p
 }
 
 
-int shift(std::string str, std::string obr, const std::vector<int>& pi)
+int shift(std::string& str, std::string& obr, const std::vector<int>& pi)
 {
 	if (str.size() != obr.size())
 		return -1;
-	std::vector<int> index = kmp(str + str, obr, pi);
+	std::string newStr = str + str;
+	std::vector<int> index = kmp(newStr, obr, pi);
 
 	if (index.empty())
 		return -1;
